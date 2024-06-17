@@ -139,6 +139,7 @@ for( var i = 0; i < userClickedPattern.length; i++) {
 };
 
 function wrong() {
+    $("h3").text(level);
     level = 0;
     userClickedPattern = [];
     gamePattern = [];
