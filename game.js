@@ -3,6 +3,7 @@ var userClickedPattern = [];
 var buttonColors = ["red", "blue", "green", "yellow"];
 var level = 0;
 var gameStart = false;
+var highScore = 0;
 
 
 function nextSequence() {
@@ -127,7 +128,10 @@ for( var i = 0; i < userClickedPattern.length; i++) {
         $("h1").text("Game Over, Press Any Key to Restart");
         wrong();
         return "you lose"; 
-    } else if (userClickedPattern.length === gamePattern.length && userClickedPattern[i] === gamePattern[i] && gamePattern[gamePattern.length-1] === userClickedPattern[currentLevel]) {
+    }  if (userClickedPattern.length > highScore){
+        highScore = userClickedPattern.length;
+        }
+    else if (userClickedPattern.length === gamePattern.length && userClickedPattern[i] === gamePattern[i] && gamePattern[gamePattern.length-1] === userClickedPattern[currentLevel]) {
             userClickedPattern = [];
             setTimeout(() => {
                 nextSequence();
@@ -139,6 +143,7 @@ for( var i = 0; i < userClickedPattern.length; i++) {
 };
 
 function wrong() {
+    $("h3").text("High Score: " + highScore);
     level = 0;
     userClickedPattern = [];
     gamePattern = [];
