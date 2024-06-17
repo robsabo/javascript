@@ -128,11 +128,10 @@ for( var i = 0; i < userClickedPattern.length; i++) {
         $("h1").text("Game Over, Press Any Key to Restart");
         wrong();
         return "you lose"; 
-    }  if (userClickedPattern.length > highScore){
-        highScore = userClickedPattern.length;
-        }
+    }  
     else if (userClickedPattern.length === gamePattern.length && userClickedPattern[i] === gamePattern[i] && gamePattern[gamePattern.length-1] === userClickedPattern[currentLevel]) {
-            userClickedPattern = [];
+        highScoreCheck();    
+        userClickedPattern = [];
             setTimeout(() => {
                 nextSequence();
             }, 1000);
@@ -141,6 +140,12 @@ for( var i = 0; i < userClickedPattern.length; i++) {
     }
     
 };
+
+function highScoreCheck () {
+ if (userClickedPattern.length > highScore){
+    highScore = userClickedPattern.length;
+    }
+}
 
 function wrong() {
     $("h3").text("High Score: " + highScore);
